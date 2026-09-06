@@ -10,14 +10,26 @@
   "highlights": {
     "heading": "What I’m into",
     "items": [
-      { "heading": "Building", "description": "Apps, SaaS products, and companies—especially where a small idea can grow into something genuinely useful." },
-      { "heading": "Thinking in systems", "description": "I like getting to the root of a problem, keeping the long view in mind, and making practical choices along the way." },
-      { "heading": "Staying curious", "description": "The web is a great place to play, experiment, learn quickly, and see what happens when you make things." }
+      {
+        "heading": "Building",
+        "description": "Apps, SaaS products, and companies. Especially where a small idea can grow into something genuinely useful."
+      },
+      {
+        "heading": "Thinking in systems",
+        "description": "I like getting to the root of a problem, keeping the long view in mind, and making practical choices along the way."
+      },
+      {
+        "heading": "Staying curious",
+        "description": "The web is a great place to play, experiment, learn quickly, and see what happens when you make things."
+      }
     ]
   },
   "latestPosts": {
     "heading": "Notes along the way",
-    "link": { "label": "All posts", "href": "/blog" },
+    "link": {
+      "label": "All posts",
+      "href": "/blog"
+    },
     "empty": "Something new is on its way."
   }
 }
