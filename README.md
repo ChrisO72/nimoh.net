@@ -18,14 +18,12 @@ Static Astro pages, Tailwind CSS, a React blog filter, and Pages CMS. Requires N
 │   ├── content.config.ts      # Blog collection + frontmatter schema
 │   ├── data/
 │   │   ├── home.json          # Home sections + metadata
-│   │   ├── about.json         # About sections + metadata
 │   │   ├── blog.json          # Blog intro + filter labels + metadata
 │   │   └── site.json          # Site name, navigation, footer, shared labels
 │   ├── layouts/Layout.astro   # Document head + shared page shell
 │   ├── lib/posts.ts           # Published posts, ordering, dates, summaries
 │   ├── pages/
 │   │   ├── index.astro        # /
-│   │   ├── about.astro        # /about
 │   │   └── blog/
 │   │       ├── index.astro     # /blog
 │   │       └── [...slug].astro # /blog/<filename>
@@ -50,15 +48,15 @@ npm run preview                # Preview the build locally
 
 Push this repository to GitHub, sign in to [Pages CMS](https://app.pagescms.org), authorize the repository, and select its branch. The root `.pages.yml` defines the editors and deployment actions. CMS saves content to GitHub; use **Deploy preview** to update the stable Cloudflare preview or **Deploy** to update production.
 
-Edit page content under **Home**, **About**, and **Blog page**; edit shared content under **Site settings**. Layout and section order stay in Astro. Highlight/value items can be added, removed, or reordered within their sections.
+Edit page content under **Home** and **Blog page**; edit shared content under **Site settings**. Layout and section order stay in Astro. Highlight items can be added, removed, or reordered within their section.
 
 Create posts under **Blog posts**. Use a lowercase, hyphenated `.md` filename. Titles can change without changing URLs. Drafts are excluded everywhere; publication dates sort posts, with the latest two shown on Home. The body editor saves Markdown and uploads images to `public/uploads`.
 
 To add an editable page, for example `/contact`:
 
-1. Copy `src/data/about.json` to `src/data/contact.json` and adjust its content.
-2. Copy `src/pages/about.astro` to `src/pages/contact.astro`; import the new data and adjust its sections.
-3. Copy the About entry in `.pages.yml`; set a unique `name`, label, path, and fields matching the JSON.
+1. Create `src/data/contact.json` with the page content and metadata.
+2. Create `src/pages/contact.astro`; import the new data and add the page sections.
+3. Add a matching entry in `.pages.yml`; set a unique `name`, label, path, and fields matching the JSON.
 4. Add the link in `src/data/site.json`. Keep CMS fields and component props aligned when changing content shapes.
 
 ## Cloudflare deployment

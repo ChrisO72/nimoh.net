@@ -11,11 +11,7 @@ const posts = (await getPublishedPosts()).slice(0, 2).map(toPostSummary);
 
 <Layout {...page.meta}>
 	<div class="space-y-16 sm:space-y-24">
-		<PageIntro {...page.intro}>
-			<a href={page.link.href} class="mt-8 inline-flex rounded-md bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-700">
-				{page.link.label}
-			</a>
-		</PageIntro>
+		<PageIntro {...page.intro} />
 		<ItemGrid {...page.highlights} />
 		<section class="border-t border-neutral-200 pt-10">
 			<div class="mb-4 flex flex-wrap items-baseline justify-between gap-4">

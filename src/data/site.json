@@ -1,11 +1,10 @@
 {
-  "name": "Studio",
+  "name": "Chris Opon-Nimoh",
   "navigation": [
     { "label": "Home", "href": "/" },
-    { "label": "About", "href": "/about" },
     { "label": "Blog", "href": "/blog" }
   ],
-  "footer": "A little space for good ideas.",
+  "footer": "Building, learning, and leaving notes along the way.",
   "labels": {
     "navigation": "Main navigation",
     "skipToContent": "Skip to content",

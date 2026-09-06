@@ -58,7 +58,7 @@ components:
         label: Destination
         type: string
         required: true
-        description: Use /about for a page or https://example.com for an external link.
+        description: Use /blog for a page or https://example.com for an external link.
   itemGrid:
     type: object
     required: true
@@ -86,9 +86,6 @@ content:
       - name: intro
         label: Introduction
         component: intro
-      - name: link
-        label: Introduction link
-        component: link
       - name: highlights
         label: Highlights
         component: itemGrid
@@ -108,37 +105,6 @@ content:
             label: No posts message
             type: text
             required: true
-
-  - name: about
-    label: About
-    type: file
-    path: src/data/about.json
-    format: json
-    operations:
-      delete: false
-    fields:
-      - name: meta
-        component: meta
-      - name: intro
-        label: Introduction
-        component: intro
-      - name: story
-        label: Story
-        type: object
-        required: true
-        fields:
-          - name: heading
-            label: Section heading
-            type: string
-            required: true
-          - name: paragraphs
-            label: Paragraphs
-            type: text
-            list: true
-            required: true
-      - name: values
-        label: Values
-        component: itemGrid
 
   - name: blogPage
     label: Blog page

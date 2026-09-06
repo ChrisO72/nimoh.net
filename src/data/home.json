@@ -1,23 +1,22 @@
 {
   "meta": {
-    "title": "Home",
-    "description": "A small studio making room for thoughtful work and good ideas."
+    "title": "Chris Opon-Nimoh",
+    "description": "Chris Opon-Nimoh is a technology leader, builder, and CTO at Smart.pr."
   },
   "intro": {
-    "heading": "Good ideas start here.",
-    "description": "A small space to share what we do, what we believe, and what we’re learning along the way."
+    "heading": "Building useful things for the web.",
+    "description": "I’m Chris Opon-Nimoh, CTO at Smart.pr. I love technology, software, and the process of turning an idea into something people can use."
   },
-  "link": { "label": "A little about us", "href": "/about" },
   "highlights": {
-    "heading": "What matters to us",
+    "heading": "What I’m into",
     "items": [
-      { "heading": "Clear thinking", "description": "Start with a good question. Make time to understand what matters." },
-      { "heading": "Careful work", "description": "Pay attention to the details that make something useful and enjoyable." },
-      { "heading": "Room to grow", "description": "Keep things simple enough to change as new ideas take shape." }
+      { "heading": "Building", "description": "Apps, SaaS products, and companies—especially where a small idea can grow into something genuinely useful." },
+      { "heading": "Thinking in systems", "description": "I like getting to the root of a problem, keeping the long view in mind, and making practical choices along the way." },
+      { "heading": "Staying curious", "description": "The web is a great place to play, experiment, learn quickly, and see what happens when you make things." }
     ]
   },
   "latestPosts": {
-    "heading": "Latest writing",
+    "heading": "Notes along the way",
     "link": { "label": "All posts", "href": "/blog" },
     "empty": "Something new is on its way."
   }
