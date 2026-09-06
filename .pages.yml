@@ -1,8 +1,14 @@
 # https://pagescms.org/docs/configuration/
 media:
-  input: public/uploads
-  output: /uploads
-  categories: [image]
+  - name: uploads
+    input: public/uploads
+    output: /uploads
+    categories: [image]
+  - name: site-icons
+    label: Site icons
+    input: public
+    output: /
+    extensions: [svg, png, ico]
 
 actions:
   - name: deploy-preview
@@ -199,6 +205,15 @@ content:
         label: Site name
         type: string
         required: true
+      - name: favicon
+        label: Favicon
+        type: image
+        required: true
+        description: The browser tab icon. Upload or select an SVG, PNG, or ICO file.
+        options:
+          media: site-icons
+          path: public
+          extensions: [svg, png, ico]
       - name: navigation
         label: Navigation links
         component: link

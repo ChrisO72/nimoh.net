@@ -1,5 +1,6 @@
 {
   "name": "Chris Opon-Nimoh",
+  "favicon": "/favicon.svg",
   "navigation": [
     { "label": "Home", "href": "/" },
     { "label": "Blog", "href": "/blog" }
