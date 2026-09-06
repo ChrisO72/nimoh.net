@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import ItemGrid from '../components/ItemGrid.astro';
+import PostList from '../components/PostList.astro';
+import page from '../data/home.json';
+import { getPublishedPosts, toPostSummary } from '../lib/posts';
+
+const posts = (await getPublishedPosts()).slice(0, 2).map(toPostSummary);
+---
+
+<Layout {...page.meta}>
+	<div class="space-y-16 sm:space-y-24">
+		<PageIntro {...page.intro}>
+			<a href={page.link.href} class="mt-8 inline-flex rounded-md bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-700">
+				{page.link.label}
+			</a>
+		</PageIntro>
+		<ItemGrid {...page.highlights} />
+		<section class="border-t border-neutral-200 pt-10">
+			<div class="mb-4 flex flex-wrap items-baseline justify-between gap-4">
+				<h2 class="text-2xl font-semibold tracking-tight">{page.latestPosts.heading}</h2>
+				<a href={page.latestPosts.link.href} class="text-sm underline underline-offset-4">{page.latestPosts.link.label}</a>
+			</div>
+			<PostList posts={posts} emptyMessage={page.latestPosts.empty} />
+		</section>
+	</div>
+</Layout>

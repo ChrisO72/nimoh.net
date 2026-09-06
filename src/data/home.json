@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "title": "Home",
+    "description": "A small studio making room for thoughtful work and good ideas."
+  },
+  "intro": {
+    "heading": "Good ideas start here.",
+    "description": "A small space to share what we do, what we believe, and what we’re learning along the way."
+  },
+  "link": { "label": "A little about us", "href": "/about" },
+  "highlights": {
+    "heading": "What matters to us",
+    "items": [
+      { "heading": "Clear thinking", "description": "Start with a good question. Make time to understand what matters." },
+      { "heading": "Careful work", "description": "Pay attention to the details that make something useful and enjoyable." },
+      { "heading": "Room to grow", "description": "Keep things simple enough to change as new ideas take shape." }
+    ]
+  },
+  "latestPosts": {
+    "heading": "Latest writing",
+    "link": { "label": "All posts", "href": "/blog" },
+    "empty": "Something new is on its way."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Studio",
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about" },
+    { "label": "Blog", "href": "/blog" }
+  ],
+  "footer": "A little space for good ideas.",
+  "labels": {
+    "navigation": "Main navigation",
+    "skipToContent": "Skip to content",
+    "backToBlog": "Back to blog"
+  }
+}

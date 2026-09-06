@@ -1,0 +1,26 @@
+---
+import type { PostSummary } from '../lib/posts';
+
+interface Props {
+	posts: PostSummary[];
+	emptyMessage: string;
+}
+
+const { posts, emptyMessage } = Astro.props;
+---
+
+{posts.length === 0 ? <p class="py-6 text-neutral-600">{emptyMessage}</p> : (
+	<ul class="divide-y divide-neutral-200">
+		{posts.map((post) => (
+			<li class="py-6">
+				<article>
+					<time datetime={post.date} class="text-sm text-neutral-500">{post.displayDate}</time>
+					<h3 class="mt-2 text-xl font-medium tracking-tight">
+						<a href={post.href} class="hover:underline underline-offset-4">{post.title}</a>
+					</h3>
+					<p class="mt-2 leading-relaxed text-neutral-600">{post.description}</p>
+				</article>
+			</li>
+		))}
+	</ul>
+)}

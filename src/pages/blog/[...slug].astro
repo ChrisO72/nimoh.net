@@ -1,0 +1,36 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import site from '../../data/site.json';
+import { getPublishedPosts, formatDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	const posts = await getPublishedPosts();
+	return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+	<article class="mx-auto max-w-2xl">
+		<header>
+			<p class="mb-4 text-sm text-neutral-500">
+				<time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+			</p>
+			<PageIntro heading={post.data.title} description={post.data.description} />
+		</header>
+		<div class="prose mt-10 border-t border-neutral-200 pt-10">
+			<Content />
+		</div>
+		<footer class="mt-12 border-t border-neutral-200 pt-8">
+			<a href="/blog" class="text-sm underline underline-offset-4">{site.labels.backToBlog}</a>
+		</footer>
+	</article>
+</Layout>

@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Blog",
+    "description": "Notes, ideas, and things we’ve learned along the way."
+  },
+  "intro": {
+    "heading": "Notes along the way.",
+    "description": "A place for ideas, small discoveries, and a closer look at how we work."
+  },
+  "filter": {
+    "label": "Find a post",
+    "placeholder": "Search titles and descriptions…",
+    "empty": "No posts yet. Check back soon.",
+    "noResults": "No posts found. Try another search."
+  }
+}

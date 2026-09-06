@@ -1,0 +1,260 @@
+# https://pagescms.org/docs/configuration/
+media:
+  input: public/uploads
+  output: /uploads
+  categories: [image]
+
+actions:
+  - name: deploy-preview
+    label: Deploy preview
+    workflow: deploy.yml
+    ref: current
+    confirm: false
+  - name: deploy
+    label: Deploy
+    workflow: deploy.yml
+    ref: current
+    confirm:
+      title: Deploy website?
+      message: This will update the client's live website.
+      button: Deploy
+
+# Reuse these field groups when adding pages.
+components:
+  meta:
+    type: object
+    label: Page metadata
+    required: true
+    fields:
+      - name: title
+        label: Page title
+        type: string
+        required: true
+      - name: description
+        label: Meta description
+        type: text
+        required: true
+  intro:
+    type: object
+    required: true
+    fields:
+      - name: heading
+        label: Heading
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
+  link:
+    type: object
+    required: true
+    fields:
+      - name: label
+        label: Link text
+        type: string
+        required: true
+      - name: href
+        label: Destination
+        type: string
+        required: true
+        description: Use /about for a page or https://example.com for an external link.
+  itemGrid:
+    type: object
+    required: true
+    fields:
+      - name: heading
+        label: Section heading
+        type: string
+        required: true
+      - name: items
+        label: Items
+        component: intro
+        list: true
+
+content:
+  - name: home
+    label: Home
+    type: file
+    path: src/data/home.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: meta
+        component: meta
+      - name: intro
+        label: Introduction
+        component: intro
+      - name: link
+        label: Introduction link
+        component: link
+      - name: highlights
+        label: Highlights
+        component: itemGrid
+      - name: latestPosts
+        label: Latest posts
+        type: object
+        required: true
+        fields:
+          - name: heading
+            label: Section heading
+            type: string
+            required: true
+          - name: link
+            label: Blog link
+            component: link
+          - name: empty
+            label: No posts message
+            type: text
+            required: true
+
+  - name: about
+    label: About
+    type: file
+    path: src/data/about.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: meta
+        component: meta
+      - name: intro
+        label: Introduction
+        component: intro
+      - name: story
+        label: Story
+        type: object
+        required: true
+        fields:
+          - name: heading
+            label: Section heading
+            type: string
+            required: true
+          - name: paragraphs
+            label: Paragraphs
+            type: text
+            list: true
+            required: true
+      - name: values
+        label: Values
+        component: itemGrid
+
+  - name: blogPage
+    label: Blog page
+    type: file
+    path: src/data/blog.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: meta
+        component: meta
+      - name: intro
+        label: Introduction
+        component: intro
+      - name: filter
+        label: Post filter
+        type: object
+        required: true
+        fields:
+          - name: label
+            label: Search label
+            type: string
+            required: true
+          - name: placeholder
+            label: Search placeholder
+            type: string
+            required: true
+          - name: empty
+            label: No posts message
+            type: text
+            required: true
+          - name: noResults
+            label: No search results message
+            type: text
+            required: true
+
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{primary}.md"
+      field: create
+    # Filenames define public URLs; preserve them after creation.
+    operations:
+      rename: false
+    view:
+      fields: [title, pubDate, draft]
+      primary: title
+      sort: pubDate
+      order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+        required: true
+        description: Used in post lists, search, and the meta description.
+      - name: pubDate
+        label: Publication date
+        type: date
+        required: true
+        options:
+          time: false
+          format: yyyy-MM-dd
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+        description: Drafts are excluded from the site. Dates control sorting, not scheduled publishing.
+      - name: body
+        label: Body
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+
+  - name: site
+    label: Site settings
+    type: file
+    path: src/data/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: name
+        label: Site name
+        type: string
+        required: true
+      - name: navigation
+        label: Navigation links
+        component: link
+        list: true
+      - name: footer
+        label: Footer text
+        type: text
+        required: true
+      - name: labels
+        label: Interface labels
+        type: object
+        required: true
+        fields:
+          - name: navigation
+            label: Navigation accessibility label
+            type: string
+            required: true
+          - name: skipToContent
+            label: Skip link text
+            type: string
+            required: true
+          - name: backToBlog
+            label: Back to blog link text
+            type: string
+            required: true

@@ -1,0 +1,31 @@
+---
+import site from '../data/site.json';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => {
+	const path = href.replace(/\/$/, '') || '/';
+	return pathname === path || (path !== '/' && pathname.startsWith(`${path}/`));
+};
+---
+
+<header class="border-b border-neutral-200">
+	<div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-6 px-6 py-6">
+		<a href="/" class="text-lg font-semibold tracking-tight">{site.name}</a>
+		<nav aria-label={site.labels.navigation}>
+			<ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+				{(site.navigation ?? []).map((link) => (
+					<li>
+						<a
+							href={link.href}
+							aria-current={isCurrent(link.href) ? 'page' : undefined}
+							class:list={[
+								'transition-colors hover:text-neutral-950',
+								isCurrent(link.href) ? 'font-medium text-neutral-950' : 'text-neutral-600',
+							]}
+						>{link.label}</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	</div>
+</header>

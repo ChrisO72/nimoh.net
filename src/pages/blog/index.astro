@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import BlogFilter from '../../components/BlogFilter';
+import page from '../../data/blog.json';
+import { getPublishedPosts, toPostSummary } from '../../lib/posts';
+
+const posts = (await getPublishedPosts()).map(toPostSummary);
+---
+
+<Layout {...page.meta}>
+	<div class="max-w-2xl space-y-12">
+		<PageIntro {...page.intro} />
+		<BlogFilter posts={posts} labels={page.filter} client:load />
+	</div>
+</Layout>

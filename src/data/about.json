@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "About",
+    "description": "Our story and the values behind our work."
+  },
+  "intro": {
+    "heading": "Small team. Thoughtful work.",
+    "description": "We like making useful things, asking better questions, and keeping the process simple."
+  },
+  "story": {
+    "heading": "Our story",
+    "paragraphs": [
+      "We started with a shared interest in doing good work without making it complicated. A few conversations turned into a first project, and things grew from there.",
+      "Today, we’re still curious. We take on work we care about, leave room to experiment, and share what we learn along the way."
+    ]
+  },
+  "values": {
+    "heading": "How we work",
+    "items": [
+      { "heading": "Stay curious", "description": "Listen first. There’s always something more to learn." },
+      { "heading": "Keep it honest", "description": "Say what you mean and make promises you can keep." },
+      { "heading": "Make it useful", "description": "Focus on the things that help someone in their everyday life." }
+    ]
+  }
+}

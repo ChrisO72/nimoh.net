@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer base {
+	:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 4px;
+	}
+
+	::selection {
+		background: var(--color-neutral-200);
+	}
+}
+
+/* Markdown content has no utility classes of its own. */
+@layer components {
+	.prose {
+		@apply leading-8 text-neutral-700;
+		overflow-wrap: anywhere;
+	}
+
+	.prose > * + * { margin-top: 1.5rem; }
+	.prose :is(h2, h3, h4, h5, h6) {
+		@apply mt-10 mb-4 font-semibold tracking-tight text-neutral-900;
+	}
+	.prose h2 { @apply text-2xl; }
+	.prose h3 { @apply text-xl; }
+	.prose a { @apply text-neutral-900 underline underline-offset-4; }
+	.prose ul { @apply list-disc pl-6; }
+	.prose ol { @apply list-decimal pl-6; }
+	.prose li + li { @apply mt-2; }
+	.prose li > :is(ul, ol) { @apply mt-2; }
+	.prose blockquote { @apply border-l-2 border-neutral-300 pl-5 italic; }
+	.prose pre { @apply overflow-x-auto rounded-md bg-neutral-100 p-4 text-sm; }
+	.prose :not(pre) > code { @apply rounded bg-neutral-100 px-1 py-0.5 text-sm; }
+	.prose img { @apply h-auto max-w-full rounded-md; }
+	.prose hr { @apply my-10 border-neutral-200; }
+	.prose table { @apply block max-w-full overflow-x-auto border-collapse text-sm; }
+	.prose :is(th, td) { @apply border border-neutral-200 px-4 py-2 text-left; }
+}

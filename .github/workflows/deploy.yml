@@ -1,0 +1,91 @@
+name: Deploy website
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS payload as JSON
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-deploy-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: ${{ fromJSON(inputs.payload).action.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ACTION_NAME: ${{ fromJSON(inputs.payload).action.name }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+    steps:
+      - name: Check deployment configuration
+        shell: bash
+        run: |
+          status=0
+
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Missing required GitHub Actions secret: CLOUDFLARE_ACCOUNT_ID. Add it under Settings > Secrets and variables > Actions."
+            status=1
+          fi
+
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Missing required GitHub Actions secret: CLOUDFLARE_API_TOKEN. Add it under Settings > Secrets and variables > Actions."
+            status=1
+          fi
+
+          case "$ACTION_NAME" in
+            deploy-preview|deploy) ;;
+            *)
+              echo "::error::Unsupported Pages CMS action: $ACTION_NAME"
+              status=1
+              ;;
+          esac
+
+          exit "$status"
+
+      - name: Check out selected content
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ fromJSON(inputs.payload).repository.sha }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check project
+        run: npm run check
+
+      - name: Build static website
+        run: npm run build
+
+      - name: Deploy preview
+        if: env.ACTION_NAME == 'deploy-preview'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4"
+          command: versions upload --preview-alias preview
+
+      - name: Deploy production
+        if: env.ACTION_NAME == 'deploy'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4"
+          command: deploy
