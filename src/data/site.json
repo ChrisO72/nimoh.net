@@ -1,9 +1,15 @@
 {
   "name": "Chris Opon-Nimoh",
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navigation": [
-    { "label": "Home", "href": "/" },
-    { "label": "Blog", "href": "/blog" }
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    }
   ],
   "footer": "Building, learning, and leaving notes along the way.",
   "labels": {
