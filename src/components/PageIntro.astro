@@ -2,13 +2,14 @@
 interface Props {
 	heading: string;
 	description: string;
+	accent?: boolean;
 }
 
-const { heading, description } = Astro.props;
+const { heading, description, accent = false } = Astro.props;
 ---
 
 <div class="max-w-2xl">
-	<h1 class="text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">{heading}</h1>
-	<p class="mt-6 whitespace-pre-line text-lg leading-relaxed text-neutral-600">{description}</p>
+	<h1 class:list={["text-4xl leading-tight font-semibold tracking-tight sm:text-5xl", { "text-red-600": accent }]}>{heading}</h1>
+	<p class:list={["mt-6 whitespace-pre-line text-lg leading-relaxed", accent ? "text-red-600" : "text-neutral-600"]}>{description}</p>
 	<slot />
 </div>
