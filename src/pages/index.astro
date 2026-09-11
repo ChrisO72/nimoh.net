@@ -11,7 +11,7 @@ const posts = (await getPublishedPosts()).slice(0, 2).map(toPostSummary);
 
 <Layout {...page.meta}>
 	<div class="space-y-16 sm:space-y-24">
-		<PageIntro {...page.intro} accent />
+		<PageIntro {...page.intro} />
 		<ItemGrid {...page.highlights} />
 		<section class="border-t border-neutral-200 pt-10">
 			<div class="mb-4 flex flex-wrap items-baseline justify-between gap-4">
