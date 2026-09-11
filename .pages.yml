@@ -13,10 +13,10 @@ media:
 links:
   - name: live-website
     label: Live website
-    url: https://www.google.com
+    url: https://nimoh.net
   - name: preview-website
     label: Preview website
-    url: https://www.google.com
+    url: https://preview-nimoh-net.onsoftware.workers.dev/
 
 actions:
   - name: deploy-preview
