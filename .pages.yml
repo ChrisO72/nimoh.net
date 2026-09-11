@@ -23,14 +23,17 @@ actions:
     label: Deploy preview
     workflow: deploy.yml
     ref: current
-    confirm: false
+    confirm:
+      title: Deploy preview website?
+      message: This will update your preview website
+      button: Deploy
   - name: deploy
     label: Deploy
     workflow: deploy.yml
     ref: current
     confirm:
       title: Deploy website?
-      message: This will update the client's live website.
+      message: This will update your live website.
       button: Deploy
 
 # Reuse these field groups when adding pages.
