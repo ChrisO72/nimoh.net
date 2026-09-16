@@ -2,9 +2,8 @@
 title: A place to begin
 description: A few thoughts on starting small and making space for what comes next.
 pubDate: 2026-09-01
-draft: false
+draft: true
 ---
-
 Every project starts somewhere. Sometimes it’s a notebook full of ideas. Sometimes it’s a conversation that stays with you. For us, it started with a simple question: what would we like to make more room for?
 
 ## Start with what matters
