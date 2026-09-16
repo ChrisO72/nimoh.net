@@ -2,9 +2,8 @@
 title: Keeping things simple
 description: Why we give every new idea a little space before adding more.
 pubDate: 2026-09-04
-draft: false
+draft: true
 ---
-
 It’s easy for a small project to become a long list of possibilities. Each new idea sounds useful on its own. Together, they can make it harder to see what the project is really for.
 
 ## Ask one question at a time
