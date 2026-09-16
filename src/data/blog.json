@@ -1,11 +1,11 @@
 {
   "meta": {
     "title": "Blog",
-    "description": "Notes, ideas, and things we’ve learned along the way."
+    "description": "Notes, ideas, and things I’ve learned along the way."
   },
   "intro": {
     "heading": "Notes along the way.",
-    "description": "A place for ideas, small discoveries, and a closer look at how we work."
+    "description": "A place for ideas, concepts and small discoveries."
   },
   "filter": {
     "label": "Find a post",
